@@ -52,13 +52,12 @@ export default function SeatMap() {
                 <motion.button
                   key={seatId}
                   whileHover={{ scale: 1.1 }}
-                  onClick={() => toggleSeat(seatId)}
-                  className={`w-8 h-8 rounded-t-lg transition-all duration-300 ${
-                    isSelected 
-                      ? "bg-[#D4AF37] shadow-[0_0_10px_#D4AF37]" 
-                      : "bg-[#1A1A1A] border border-[#333] hover:border-[#D4AF37]"
-                  }`}
-                />
+                  onClick={(e) => {
+                  e.stopPropagation(); // Stops the event from bubbling up
+                 toggleSeat(seatId);
+                 }}
+                 className={`pointer-events-auto w-8 h-8 rounded-t-lg ...`}
+               />
               );
             })}
           </div>
@@ -86,4 +85,6 @@ export default function SeatMap() {
       )}
     </div>
   );
+  // Inside SeatMap()
+console.log("SeatMap rendered! Current selected seats:", selectedSeats);
 }
