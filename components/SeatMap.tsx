@@ -1,8 +1,8 @@
 "use client";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-// Helper for seat labels (A1, A2, etc.)
 const ROWS = ["A", "B", "C", "D", "E"];
 const SEATS_PER_ROW = 8;
 
@@ -19,12 +19,10 @@ export default function SeatMap() {
     <div className="flex flex-col items-center p-8 bg-[#0A0A0A] text-white">
       <h2 className="text-2xl font-bold mb-8 text-[#D4AF37]">Select Your Seats</h2>
       
-      {/* Screen Indicator */}
       <div className="w-full max-w-md h-2 bg-[#D4AF37]/20 rounded-t-full mb-12 shadow-[0_-5px_15px_rgba(212,175,55,0.3)]">
         <p className="text-center text-xs text-[#D4AF37] mt-3">SCREEN THIS WAY</p>
       </div>
 
-      {/* Seat Grid */}
       <div className="grid gap-3">
         {ROWS.map((row) => (
           <div key={row} className="flex gap-2">
@@ -49,7 +47,6 @@ export default function SeatMap() {
         ))}
       </div>
 
-      {/* Booking Summary Bar */}
       {selectedSeats.length > 0 && (
         <motion.div 
           initial={{ y: 50 }} 
