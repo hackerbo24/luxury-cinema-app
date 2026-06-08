@@ -1,12 +1,15 @@
+// DELETE the import PaymongoClient line entirely
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
+  // Now, just use the fetch method instead
   const { amount, description } = await req.json();
 
   const response = await fetch('https://api.paymongo.com/v2/checkout_sessions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      // This is how we authenticate now
       'Authorization': `Basic ${Buffer.from(process.env.PAYMONGO_SECRET_KEY!).toString('base64')}`,
     },
     body: JSON.stringify({
